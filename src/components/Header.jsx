@@ -6,8 +6,6 @@ const navItems = [
   "About",
   "Programs",
   "Podcast",
-  "Membership",
-  "Enrollment Portal",
   "Blog",
   "Contact",
 ];
@@ -18,7 +16,7 @@ const joinUsLinks = [
   { label: "Partner With Us", href: "#partner" },
 ];
 
-// === Logo Component ===
+// === Logo ===
 const Logo = () => (
   <div className="flex items-center">
     <div className="bg-white rounded-full p-2 mr-3">
@@ -38,7 +36,7 @@ const Logo = () => (
         />
       </svg>
     </div>
-    <span className="text-white font-bold text-xl hidden sm:block">
+    <span className="text-white font-bold text-xl hidden sm:inline">
       Women Empowerment
     </span>
   </div>
@@ -51,8 +49,7 @@ const NavLinks = ({ onItemClick }) => (
       <a
         key={item}
         href={`#${item.toLowerCase().replace(/ /g, "-")}`}
-        className="text-white hover:text-gray-200 transition-colors flex items-center group focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
-        aria-label={`Navigate to ${item}`}
+        className="text-white hover:text-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
         onClick={onItemClick}
       >
         {item}
@@ -66,41 +63,34 @@ const JoinUsDropdown = ({ onItemClick }) => {
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef(null);
 
-  const clearCloseTimeout = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-  };
-
-  const handleMouseEnter = () => {
-    clearCloseTimeout();
+  const handleOpen = () => {
+    clearTimeout(timeoutRef.current);
     setOpen(true);
   };
 
-  const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => setOpen(false), 200);
+  const handleClose = () => {
+    timeoutRef.current = setTimeout(() => setOpen(false), 150);
   };
 
-  useEffect(() => {
-    return () => clearCloseTimeout();
-  }, []);
+  useEffect(() => () => clearTimeout(timeoutRef.current), []);
 
   return (
     <div
       className="relative"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={handleOpen}
+      onMouseLeave={handleClose}
     >
       <button
-        className="bg-[#FFD700] text-white font-semibold px-4 py-2 rounded-full shadow hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-white flex items-center"
+        className="bg-[#FFD700] text-indigo-700 font-semibold px-4 py-2 rounded-full shadow hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-white flex items-center"
         aria-haspopup="true"
         aria-expanded={open}
       >
         Join Us
         <svg
-          className="ml-2 h-4 w-4"
+          className="ml-2 h-4 w-4 "
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             strokeLinecap="round"
@@ -117,7 +107,7 @@ const JoinUsDropdown = ({ onItemClick }) => {
             <li key={label}>
               <a
                 href={href}
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
+                className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                 onClick={() => {
                   setOpen(false);
                   onItemClick();
@@ -133,21 +123,12 @@ const JoinUsDropdown = ({ onItemClick }) => {
   );
 };
 
-// === Donate Button ===
-const DonateButton = ({ onItemClick }) => (
-  <a
-    href="#donate"
-    className="bg-[#FFD700] text-white font-semibold px-4 py-2 rounded-full shadow hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-white"
-    onClick={onItemClick}
-  >
-    Donate
-  </a>
-);
+
 
 // === Mobile Menu Button ===
 const MobileMenuButton = ({ onClick }) => (
   <button
-    className="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+    className="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-white"
     aria-label="Toggle mobile menu"
     onClick={onClick}
   >
@@ -156,10 +137,9 @@ const MobileMenuButton = ({ onClick }) => (
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        internationaux="round"
+        strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={2}
         d="M4 6h16M4 12h16m-7 6h7"
@@ -171,42 +151,36 @@ const MobileMenuButton = ({ onClick }) => (
 // === Header ===
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
-
-  const handleItemClick = () => {
-    setMobileMenuOpen(false);
-  };
+  const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
+  const handleItemClick = () => setMobileMenuOpen(false);
 
   return (
-    <nav className="bg-[#9B9BBD] p-4 shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-10 flex items-center justify-between">
+    <nav className="bg-[#9B9BBD] py-4 px-4 sm:px-6 lg:px-10 shadow-md sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Logo />
+        {/* Desktop Nav */}
         <div className="hidden md:flex space-x-6 items-center">
           <NavLinks onItemClick={handleItemClick} />
           <JoinUsDropdown onItemClick={handleItemClick} />
-          <DonateButton onItemClick={handleItemClick} />
         </div>
         <MobileMenuButton onClick={toggleMobileMenu} />
       </div>
+
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#9B9BBD] px-10 py-4">
-          <div className="flex flex-col space-y-4">
-            <NavLinks onItemClick={handleItemClick} />
-            {joinUsLinks.map(({ label, href }) => (
-              <a
-                key={label}
-                href={href}
-                className="text-white hover:text-gray-200 transition-colors"
-                onClick={handleItemClick}
-              >
-                {label}
-              </a>
-            ))}
-            <DonateButton onItemClick={handleItemClick} />
-          </div>
+        <div className="md:hidden bg-[#9B9BBD] px-4 pt-4 pb-6 space-y-4 animate-slide-down">
+          <NavLinks onItemClick={handleItemClick} />
+          {joinUsLinks.map(({ label, href }) => (
+            <a
+              key={label}
+              href={href}
+              className="text-white hover:text-gray-200 transition-colors"
+              onClick={handleItemClick}
+            >
+              {label}
+            </a>
+          ))}
+    
         </div>
       )}
     </nav>

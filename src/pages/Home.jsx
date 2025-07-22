@@ -5,7 +5,8 @@ import Hero from '../components/homepage/Hero';
 import About from '../components/homepage/About';
 import RecentBlogPosts from '../components/homepage/RecentBlogPosts';
 import UpcomingEvents from '../components/homepage/UpcomingEvents';
-import SuccessStoriesCarousel from '../components/homepage/SuccessStoriesCarousel';
+import SuccessStoriesCarousel, { Testimonial } from '../components/homepage/Testimonial';
+import JoinOurEfforts from '../components/homepage/JoinOurEfforts';
 
 const Home = () => {
   return (
@@ -14,7 +15,8 @@ const Home = () => {
      <About/>
      
      <UpcomingEvents/>
-     <SuccessStoriesCarousel/>
+     <Testimonial/>
+     <JoinOurEfforts/>
      <RecentBlogPosts/>
     </Layout>
   );
