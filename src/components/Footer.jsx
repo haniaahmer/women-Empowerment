@@ -20,7 +20,7 @@ const footerLinks = [
 const Footer = () => {
   return (
     <footer className="bg-[#9B9BBD] text-white mt-auto w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-9 grid grid-cols-1 md:grid-cols-3 gap-7">
         {/* Logo and Contact Info */}
         <div className="space-y-4">
           <h3 className="text-lg font-semibold">Women Empowerment</h3>
@@ -44,26 +44,40 @@ const Footer = () => {
         </div>
 
         {/* Newsletter */}
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Subscribe to Our Newsletter</h3>
-          <p className="text-sm">
-            Get updates on programs, events, and empowerment resources.
-          </p>
-          <form className="flex flex-col sm:flex-row gap-2 w-full">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="p-2 flex-1 rounded-md bg-amber-50 text-black focus:outline-none"
-              required
-            />
-            <button
-              type="submit"
-              className="bg-[#FFD700] text-white px-4 py-2 rounded-md font-semibold hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-white"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
+  {/* Newsletter */}
+<div className="space-y-4">
+  <h3 className="text-lg font-semibold">Subscribe to Our Newsletter</h3>
+  <p className="text-sm">
+    Get updates on programs, events, and empowerment resources.
+  </p>
+  <form className="w-full flex flex-col gap-3">
+  <input
+    type="email"
+    placeholder="Enter your email"
+    className="w-[345px] p-2 rounded-md bg-amber-50 text-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
+    required
+  />
+
+  <div className=" px-6 flex flex-col sm:flex-row gap-2 w-full">
+  <button
+    type="submit"
+    className="w-full sm:w-auto bg-[#FFD700] text-indigo-800 px-4 py-2 rounded-md font-semibold hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-white transition"
+  >
+    Subscribe
+  </button>
+
+  <a
+    href="#membership"
+    className="w-full sm:w-auto text-center bg-yellow-400 px-4 py-2 rounded-md text-indigo-800  font-semibold hover:bg-yellow-500 transition"
+  >
+    Become a Member
+  </a>
+</div>
+
+</form>
+
+</div>
+
 
         {/* Quick Links */}
         <div className="space-y-4">
