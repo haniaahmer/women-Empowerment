@@ -62,29 +62,29 @@ const UpcomingEvents = () => {
 
       <div className="relative max-w-6xl mx-auto">
         <h2 className="text-5xl font-bold text-center mb-6 text-gray-800">
-          Upcoming <span className="text-indigo-600">Events</span>
+          Upcoming <span className="text-yellow-500">Events</span>
         </h2>
 
         <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12 text-lg">
           Join our exciting events designed to inspire, educate and connect you with industry leaders.
         </p>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-6">
           {events.slice(0, 4).map((event, i) => (
             <div
               key={i}
               className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl flex items-stretch"
             >
               <div className="p-3 flex flex-col justify-between w-2/3">
-                <div className="flex items-center text-xs text-gray-500 mb-1">
+                <div className="flex items-center text-sm text-gray-500 mb-1">
                   <CalendarClock className="w-4 h-4 mr-2 text-indigo-500" />
                   <span>{event.date} • {event.time}</span>
                 </div>
-                <h3 className="text-base font-semibold text-gray-800 mb-1">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
                   {event.title}
                 </h3>
-                <p className="text-sm text-gray-600 flex-grow mb-2">
-                  {truncateWords(event.description, 50)}{' '}
+                <p className="text-m text-gray-600 flex-grow mb-2">
+                  {truncateWords(event.description, 30)}{' '}
                   <a href={event.link} className="text-indigo-600 font-medium underline">View More</a>
                 </p>
               

@@ -20,7 +20,7 @@ const footerLinks = [
 const Footer = () => {
   return (
     <footer className="bg-[#9B9BBD] text-white mt-auto w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
         {/* Logo and Contact Info */}
         <div className="space-y-4">
           <h3 className="text-lg font-semibold">Women Empowerment</h3>
@@ -68,7 +68,7 @@ const Footer = () => {
         {/* Quick Links */}
         <div className="space-y-4">
           <h3 className="text-lg font-semibold">Quick Links</h3>
-          <ul className="space-y-2">
+          <ul className="space-y-4">
             {footerLinks.map(({ label, href }) => (
               <li key={label}>
                 <a
