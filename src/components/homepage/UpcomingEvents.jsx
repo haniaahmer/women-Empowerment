@@ -77,7 +77,7 @@ const UpcomingEvents = () => {
             >
               <div className="p-3 flex flex-col justify-between w-2/3">
                 <div className="flex items-center text-sm text-gray-500 mb-1">
-                  <CalendarClock className="w-4 h-4 mr-2 text-indigo-500" />
+                  <CalendarClock className="w-4 h-4 mr-2 text-yellow-500" />
                   <span>{event.date} • {event.time}</span>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">
@@ -85,7 +85,7 @@ const UpcomingEvents = () => {
                 </h3>
                 <p className="text-m text-gray-600 flex-grow mb-2">
                   {truncateWords(event.description, 30)}{' '}
-                  <a href={event.link} className="text-indigo-600 font-medium underline">View More</a>
+                  <a href={event.link} className="text-yellow-500 font-medium underline">View More</a>
                 </p>
               
               </div>
