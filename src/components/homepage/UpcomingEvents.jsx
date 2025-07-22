@@ -45,7 +45,7 @@ const truncateWords = (text, wordLimit) => {
 
 const UpcomingEvents = () => {
   return (
-    <section className="bg-gradient-to-b from-indigo-50 to-white px-4 md:px-6 py-16 relative overflow-hidden">
+    <section className="bg-gradient-to-l from-indigo-50 to-white px-4 md:px-6 py-16 relative overflow-hidden">
       {/* Decorative Circles */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
         <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-indigo-300 opacity-30"></div>

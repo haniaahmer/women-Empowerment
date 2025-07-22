@@ -44,7 +44,7 @@ export function Testimonial() {
     setCurrentIndex((prev) => (prev === total - 1 ? 0 : prev + 1));
 
   return (
-    <section className="py-16 px-4 bg-indigo-50">
+    <section className="py-16 px-4 bg-white">
       <div className="max-w-4xl mx-auto text-center">
         {/* Header */}
         <div className="mb-12">
