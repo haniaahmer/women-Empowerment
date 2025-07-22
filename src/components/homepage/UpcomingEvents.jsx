@@ -48,9 +48,9 @@ const UpcomingEvents = () => {
     <section className="bg-gradient-to-b from-indigo-100 to-white px-4 md:px-6 py-16 relative overflow-hidden">
       {/* Decorative Circles */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-        <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-indigo-100 opacity-30"></div>
-        <div className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-purple-100 opacity-20"></div>
-        <div className="absolute top-1/3 right-1/4 w-32 h-32 rounded-full bg-blue-100 opacity-20"></div>
+        <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-indigo-300 opacity-30"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-purple-300 opacity-20"></div>
+        
       </div>
 
       <div className="relative max-w-6xl mx-auto">
