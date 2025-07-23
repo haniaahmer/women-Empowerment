@@ -73,7 +73,7 @@ const Footer = () => {
             <input
               type="email"
               placeholder="Enter your email"
-              className="w-[345px] p-2 rounded-md bg-amber-50 text-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="w-[300px] p-2 rounded-md bg-amber-50 text-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
               required
             />
             <div className="px-1 flex flex-col sm:flex-row gap-3 w-full">
@@ -94,9 +94,9 @@ const Footer = () => {
         </div>
 
         {/* Quick Links */}
-        <div className="space-y-4 md:pl-20">
+        <div className="space-y-3 md:pl-20">
           <h3 className="text-lg font-semibold">Quick Links</h3>
-          <ul className="space-y-4">
+          <ul className="space-y-3">
             {quickLinks.map(({ label, href }) => (
               <li key={label}>
                 <a

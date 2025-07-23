@@ -20,7 +20,7 @@ const Logo = () => (
     <div className="bg-white rounded-full p-2 mr-3">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-8 w-8 text-[#9B9BBD]"
+        className="h-8 w-8 text-[#d4d4e6]"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"

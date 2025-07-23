@@ -16,8 +16,8 @@ const AboutOrganization = () => {
                             </svg>
                         </div>
                         <div className="flex-1">
-                            <h2 className="text-xl font-semibold text-gray-800 mb-3">Our Mission</h2>
-                            <p className="text-gray-600 leading-relaxed">
+                            <h2 className="text-xl font-bold text-black  text-[20px] mb-3">Our Mission</h2>
+                            <p className="text-black text-[18px] leading-relaxed">
                                 To build an inclusive and empowered society
                                 where every woman has the opportunity,
                                 resources, and recognition to grow financially
@@ -35,8 +35,8 @@ const AboutOrganization = () => {
                             </svg>
                         </div>
                         <div className="flex-1">
-                            <h2 className="text-xl font-semibold text-gray-800 mb-3">Our Vision</h2>
-                            <p className="text-gray-600 leading-relaxed">
+                            <h2 className="text-xl font-bold text-black text-[20px] mb-3">Our Vision</h2>
+                            <p className="text-black text-[18px] leading-relaxed">
                                 To empower women across Pakistan through
                                 entrepreneurship, skill development, financial
                                 literacy, and inclusive business ecosystems—

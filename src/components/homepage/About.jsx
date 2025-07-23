@@ -23,11 +23,11 @@ const About = () => {
 
           {/* Paragraphs */}
           <div className="space-y-4 mb-8">
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-black  text-[18px] leading-relaxed">
               We are on a mission to uplift women by creating space for growth, creativity, and leadership.
               Our comprehensive programs are designed to empower and support women in achieving their goals.
             </p>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-black text-[18px]  leading-relaxed">
               Through dedicated support services, skill development programs, and community building initiatives,
               we create an environment where women can thrive and reach their full potential. Our approach
               focuses on individual strengths while fostering collaborative growth.

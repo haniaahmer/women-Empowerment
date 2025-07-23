@@ -17,18 +17,23 @@ const OurImpact = () => {
     ];
     const colors = ["#8B5A6B", "#6B4C93", "#A4B84A", "#7BAE3F", "#B5869F"];
 
-    // Set high-res canvas
-    const scale = window.devicePixelRatio;
-    canvas.width = 300 * scale;
-    canvas.height = 300 * scale;
-    canvas.style.width = '300px';
-    canvas.style.height = '300px';
+    const scale = window.devicePixelRatio || 1;
+    const width = 500;
+    const height = 500;
+
+    canvas.width = width * scale;
+    canvas.height = height * scale;
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
     ctx.scale(scale, scale);
 
     let startAngle = 0;
-    const radius = 100;
-    const centerX = 150;
-    const centerY = 150;
+    const radius = 140;
+    const centerX = width / 2;
+    const centerY = height / 2;
+
+    ctx.font = '12px Arial';
+    ctx.textBaseline = 'middle';
 
     data.forEach((value, index) => {
       const sliceAngle = (value / 100) * 2 * Math.PI;
@@ -41,24 +46,36 @@ const OurImpact = () => {
       ctx.fill();
       ctx.closePath();
 
-      // Draw label with line
+      // Midpoint angle
       const midAngle = startAngle + sliceAngle / 2;
-      const lineX = centerX + Math.cos(midAngle) * radius;
-      const lineY = centerY + Math.sin(midAngle) * radius;
-      const labelX = centerX + Math.cos(midAngle) * (radius + 20);
-      const labelY = centerY + Math.sin(midAngle) * (radius + 20);
+      const outerRadius = radius + 30;
 
-      ctx.strokeStyle = '#555';
-      ctx.beginPath();
-      ctx.moveTo(centerX + Math.cos(midAngle) * (radius - 5), centerY + Math.sin(midAngle) * (radius - 5));
-      ctx.lineTo(lineX, lineY);
-      ctx.lineTo(labelX, labelY);
-      ctx.stroke();
+      let labelX = centerX + Math.cos(midAngle) * outerRadius;
+      let labelY = centerY + Math.sin(midAngle) * outerRadius;
 
       ctx.fillStyle = '#000';
-      ctx.font = '10px Arial';
-      ctx.textAlign = midAngle > Math.PI / 2 && midAngle < (3 * Math.PI) / 2 ? 'right' : 'left';
-      ctx.fillText(`${labels[index]} (${value}%)`, labelX, labelY);
+      ctx.textAlign = labelX < centerX ? 'right' : 'left';
+
+      const label = `${labels[index]} (${value}%)`;
+      const words = label.split(' ');
+      let line = '';
+      let yOffset = labelY;
+
+      words.forEach((word, i) => {
+        const testLine = line + word + ' ';
+        const { width: testWidth } = ctx.measureText(testLine);
+        if (testWidth > 120 && line) {
+          ctx.fillText(line, labelX, yOffset);
+          line = word + ' ';
+          yOffset += 14;
+        } else {
+          line = testLine;
+        }
+
+        if (i === words.length - 1) {
+          ctx.fillText(line, labelX, yOffset);
+        }
+      });
 
       startAngle += sliceAngle;
     });
@@ -98,7 +115,7 @@ const OurImpact = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-green-50 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-green-50 p-6 overflow-x-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-black">Our Ongoing Projects</h2>
@@ -138,7 +155,9 @@ const OurImpact = () => {
             <h3 className="text-4xl font-bold text-gray-800 mb-6 text-center">
               Project Distribution
             </h3>
-            <canvas ref={canvasRef} width={800} height={800} />
+            <div className="w-[300px] h-[300px] relative">
+              <canvas ref={canvasRef} className="w-full h-full" />
+            </div>
           </div>
         </div>
       </div>

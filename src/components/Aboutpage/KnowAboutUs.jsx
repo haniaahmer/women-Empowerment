@@ -35,7 +35,7 @@ const KnowAboutUs = () => {
 
             </div>
             <div>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-black text-[18px] leading-relaxed">
                 Growing Women Prosperity Organization, originally founded as Growing Pakistan in 2020 by Miss Romana Ch in Gujrat, began as a passionate individual initiative to empower women through financial independence and entrepreneurship. In 2025, the initiative was officially registered under the name Growing Women Prosperity Organization to reflect its focused mission of uplifting women across Pakistan. The organization is committed to creating inclusive economic opportunities and building a supportive ecosystem for women-led enterprises. With three main offices and its first Business Incubation Center established at the initial stage in Islamabad, Growing Women is actively expanding its presence nationwide. Key projects include women business incubation centers, capacity building and awareness programs, skill and professional development trainings, a dedicated women opportunity portal, and business expos and galas to promote women in entrepreneurship.
               </p>
             </div>
