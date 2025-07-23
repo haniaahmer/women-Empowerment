@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import "./ScrollCircularGallery.css";
+import React, { useEffect, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const base = "unsplash.com/photo";
 const data = [
@@ -14,127 +14,65 @@ const data = [
       by: "Clément Roy",
     },
   },
-   {
-    common: "Lion",
-    binomial: "Panthera leo",
-    photo: {
-      code: "1583499871880-de841d1ace2a",
-      page: "lion-lying-on-brown-rock-MUeeyzsjiY8",
-      text: "lion couple kissing on a brown rock",
-      pos: "47% 35%",
-      by: "Clément Roy",
-    },
-  },  {
-    common: "Lion",
-    binomial: "Panthera leo",
-    photo: {
-      code: "1583499871880-de841d1ace2a",
-      page: "lion-lying-on-brown-rock-MUeeyzsjiY8",
-      text: "lion couple kissing on a brown rock",
-      pos: "47% 35%",
-      by: "Clément Roy",
-    },
-  },  {
-    common: "Lion",
-    binomial: "Panthera leo",
-    photo: {
-      code: "1583499871880-de841d1ace2a",
-      page: "lion-lying-on-brown-rock-MUeeyzsjiY8",
-      text: "lion couple kissing on a brown rock",
-      pos: "47% 35%",
-      by: "Clément Roy",
-    },
-  },  {
-    common: "Lion",
-    binomial: "Panthera leo",
-    photo: {
-      code: "1583499871880-de841d1ace2a",
-      page: "lion-lying-on-brown-rock-MUeeyzsjiY8",
-      text: "lion couple kissing on a brown rock",
-      pos: "47% 35%",
-      by: "Clément Roy",
-    },
-  },
+  // Add more animals...
 ];
 
 const Gallery = () => {
+  const { scrollY } = useScroll();
+  const [angleOffset, setAngleOffset] = useState(0);
+
   useEffect(() => {
-    const f = (k) => {
-      if (Math.abs(k) > 0.5) {
-        scrollTo(
-          0,
-          0.5 * (k - Math.sign(k) + 1) * (document.documentElement.offsetHeight - window.innerHeight)
-        );
-      }
-    };
-    f(-1);
     const onScroll = () => {
-      const style = getComputedStyle(document.body);
-      const k = +style.getPropertyValue("--k");
-      f(k);
+      const scrollTop = window.scrollY;
+      setAngleOffset(scrollTop * 0.15); // Adjust sensitivity here
     };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <div className="gallery-root" style={{ "--n": data.length }}>
-      <svg width="0" height="0" aria-hidden="true">
-        <filter id="grain">
-          <feTurbulence type="fractalNoise" baseFrequency="7.13" />
-          <feColorMatrix type="saturate" values="0" />
-          <feComponentTransfer>
-            <feFuncA type="linear" slope=".02" />
-          </feComponentTransfer>
-          <feBlend in2="SourceGraphic" />
-        </filter>
-      </svg>
-      <header>
-        <h1>Infinite scroll circular gallery</h1>
-        <strong>scroll up & down/ use up & down arrow keys</strong>
-        <em>
-          mostly CSS scroll-driven animations (for rotating gallery on scroll) +
-          tiniest bit of JS (for infinite cycling part)
-        </em>
-      </header>
-      <main className="scene">
-        <section className="assembly">
-          {data.map((c, i) => {
-            const img = c.photo;
-            const url = `https://images.${base}-${img.code}?h=900`;
+    <div className="relative min-h-[100px] bg-black text-[#dedede] font-sans">
+      
+      <div className="h-screen overflow-hidden flex items-center justify-center [perspective:1000px]">
+        <div className="relative w-[400px] h-[400px] [transform-style:preserve-3d]">
+          {data.map((item, i) => {
+            const angle = (360 / data.length) * i + angleOffset;
+            const url = `https://images.${base}-${item.photo.code}?h=900`;
+
             return (
-              <article
+              <motion.article
                 key={i}
+                className="absolute w-64 h-100 rounded overflow-hidden shadow-lg"
                 style={{
-                  "--i": i,
-                  "--url": `url(${url})`,
-                  ...(img.pos && { "--pos": img.pos }),
+                  transform: `rotateY(${angle}deg) translateZ(500px)`,
                 }}
               >
-                <header>
-                  <h2>{c.common}</h2>
-                  <em>{c.binomial}</em>
-                </header>
-                <figure>
-                  <img src={url} alt={img.text} style={{ objectPosition: img.pos || "50% 50%" }} />
-                  <figcaption>
-                    by <a href={`https://${base}s/${img.page}`} target="_blank" rel="noreferrer">{img.by}</a>
-                  </figcaption>
-                </figure>
-              </article>
+                <img
+                  src={url}
+                  alt={item.photo.text}
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: item.photo.pos || "50% 50%" }}
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2 text-center">
+                  <h2 className="text-lg font-bold">{item.common}</h2>
+                  <em>{item.binomial}</em>
+                  <p className="text-xs">
+                    by{" "}
+                    <a
+                      href={`https://${base}s/${item.photo.page}`}
+                      className="underline"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {item.photo.by}
+                    </a>
+                  </p>
+                </div>
+              </motion.article>
             );
           })}
-        </section>
-      </main>
-      <aside className="box-info-scrollani">
-        <p>
-          Sorry, your browser does not appear to support scroll-driven animation. As of
-          January 2025, this is supported in Firefox if the
-          <kbd>layout.css.scroll-driven-animations.enabled</kbd> flag is set to true in
-          <kbd>about:config</kbd> and in Chromium browsers. Safari support is coming, but it
-          hasn't arrived yet.
-        </p>
-      </aside>
+        </div>
+      </div>
     </div>
   );
 };
