@@ -22,7 +22,7 @@ const Hero = () => {
             {/* Heading */}
             <h1 className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-['Playfair_Display'] leading-tight mb-6 sm:mb-8">
               Empowering Women to Lead,Create and
-              <span className="block text-[#FFD700]">Thrive.</span>
+              <span className="block text-yellow-500">Thrive.</span>
             </h1>
 
             {/* Description */}
@@ -33,7 +33,7 @@ const Hero = () => {
 
   <a
     href="#donate"
-    className=" bg-[#FFD700] text-black px-10 py-3 rounded-full font-bold shadow-md hover:bg-yellow-500 hover:scale-105 transition-all duration-300 animate-bounce"
+    className=" bg-yellow-700 text-ehite px-10 py-3 rounded-full font-bold shadow-md hover:bg-yellow-900 hover:scale-105 transition-all duration-300 animate-bounce"
   >
     Donate Now
   </a>

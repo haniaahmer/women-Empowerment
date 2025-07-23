@@ -8,7 +8,7 @@ const events = [
     date: 'Aug 5, 2025',
     link: '#',
     image: 'https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&w=800&q=80',
-    description: 'All the Lorem Ipsum generators...',
+    description: 'Join us for a hands-on workshop where emerging leaders learn to drive impact, manage teams effectively, and foster innovation through real-world exercises and expert guidance.',
     time: '10:00 AM - 2:00 PM',
   },
   {
@@ -16,7 +16,7 @@ const events = [
     date: 'Aug 15, 2025',
     link: '#',
     image: 'https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&w=800&q=80',
-    description: 'All the Lorem Ipsum generators...',
+    description: 'A celebration of women driving creativity across industries. Engage with successful creatives sharing their journeys, challenges, and the future of women in the arts and media.',
     time: '3:00 PM - 5:00 PM',
   },
   {
@@ -24,7 +24,7 @@ const events = [
     date: 'Sep 2, 2025',
     link: '#',
     image: 'https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&w=800&q=80',
-    description: 'All the Lorem Ipsum generators...',
+    description: 'Watch early-stage startups pitch their ideas to investors and mentors. A perfect networking opportunity for innovators and a sneak peek into the future of entrepreneurship.',
     time: '9:00 AM - 6:00 PM',
   },
   {
@@ -32,26 +32,15 @@ const events = [
     date: 'Sep 10, 2025',
     link: '#',
     image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80',
-    description: 'All the Lorem Ipsum generators...',
+    description: 'Upgrade your skills with our intensive bootcamp covering essential digital tools, social media marketing, and web design — perfect for beginners and pros alike.',
     time: '8:00 AM - 4:00 PM',
   },
 ];
 
-const truncateWords = (text, wordLimit) => {
-  const words = text.split(' ');
-  if (words.length <= wordLimit) return text;
-  return words.slice(0, wordLimit).join(' ') + '...';
-};
-
-const UpcomingEvents = () => {
+const AllEvents = () => {
   return (
     <section className="bg-gradient-to-l from-indigo-50 to-white px-4 md:px-6 py-16 relative overflow-hidden">
-      {/* Decorative Circles */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-        <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-indigo-300 opacity-30"></div>
-        <div className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-purple-300 opacity-20"></div>
-        
-      </div>
+      
 
       <div className="relative max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 text-gray-800">
@@ -64,7 +53,7 @@ const UpcomingEvents = () => {
 
         {/* Responsive Grid */}
         <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
-          {events.slice(0, 4).map((event, i) => (
+          {events.map((event, i) => (
             <div
               key={i}
               className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col md:flex-row"
@@ -79,9 +68,9 @@ const UpcomingEvents = () => {
                   {event.title}
                 </h3>
                 <p className="text-sm md:text-base text-gray-600 flex-grow mb-2">
-                  {truncateWords(event.description, 30)}{' '}
-                  <a href={event.link} className="text-yellow-600 font-medium underline">View More</a>
+                  {event.description}
                 </p>
+                <a href={event.link} className="text-yellow-600 font-medium underline">View More</a>
               </div>
 
               {/* Image */}
@@ -95,9 +84,19 @@ const UpcomingEvents = () => {
             </div>
           ))}
         </div>
+
+        {/* View All Events Button */}
+        <div className="mt-10 flex justify-center">
+          <a
+            href="#"
+            className="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-6 py-3 rounded-full transition duration-300 text-center w-full sm:w-auto"
+          >
+            View All Events
+          </a>
+        </div>
       </div>
     </section>
   );
 };
 
-export default UpcomingEvents;
+export default AllEvents;

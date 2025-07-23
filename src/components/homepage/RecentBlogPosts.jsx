@@ -62,7 +62,7 @@ const RecentBlogPosts = () => {
                 <p className="text-white text-sm mb-6 leading-relaxed opacity-90">
                   {project.description}
                 </p>
-                <button className="self-start bg-yellow-500 text-indigo-800 px-6 py-3 rounded-lg font-semibold text-sm hover:bg-gray-100 transition-all duration-200 transform hover:-translate-y-1 shadow-lg">
+                <button className="self-start bg-yellow-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-yellow-900 transition-all duration-200 transform hover:-translate-y-1 shadow-lg">
                   Learn more
                 </button>
               </div>

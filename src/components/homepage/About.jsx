@@ -35,7 +35,7 @@ const About = () => {
           </div>
 
           {/* Button */}
-          <button className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold px-6 py-3 rounded-md transition-colors duration-300">
+          <button className="bg-yellow-600 hover:bg-yellow-800 text-white font-semibold px-6 py-3 rounded-md transition-colors duration-300">
             Learn more
           </button>
         </div>

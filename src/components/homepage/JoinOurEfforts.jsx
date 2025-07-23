@@ -27,7 +27,7 @@ const JoinOurEfforts = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button
             onClick={handleVolunteerClick}
-            className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-8 py-3 rounded-lg transition-colors duration-200 min-w-[160px]"
+            className="bg-yellow-600 hover:bg-yellow-800 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-200 min-w-[160px]"
           >
             Join as a volunteer
           </button>

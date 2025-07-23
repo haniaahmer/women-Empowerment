@@ -88,7 +88,7 @@ export function Testimonial() {
           {/* Previous Button */}
           <button
             onClick={goToPrevious}
-            className="w-9 h-9 rounded-full bg-yellow-500 text-white hover:bg-yellow-600 transition-colors flex items-center justify-center"
+            className="w-9 h-9 rounded-full bg-yellow-600 text-white hover:bg-yellow-800 transition-colors flex items-center justify-center"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -98,7 +98,7 @@ export function Testimonial() {
           {/* Next Button */}
           <button
             onClick={goToNext}
-            className="w-9 h-9 rounded-full bg-yellow-500 text-white hover:bg-yellow-600 transition-colors flex items-center justify-center"
+            className="w-9 h-9 rounded-full bg-yellow-600 text-white hover:bg-yellow-800 transition-colors flex items-center justify-center"
             aria-label="Next testimonial"
           >
             <ChevronRight className="h-5 w-5" />
