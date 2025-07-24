@@ -31,7 +31,7 @@ export  function SignUpForm() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-6">
+    <div className="max-w-2xl  mt-20 mx-auto bg-white rounded-xl shadow-lg p-6 mb-20">
       <div className="flex items-center space-x-2 mb-6">
         <Heart className="w-6 h-6 text-blue-500" />
         <h2 className="text-2xl font-bold text-gray-800">Sign Up</h2>

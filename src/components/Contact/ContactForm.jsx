@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, Globe } from 'lucide-react';
+import { Mail, MapPin, Globe, Facebook, Instagram } from 'lucide-react';
 
-export  function ContactForm() {
+export function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,7 +27,7 @@ export  function ContactForm() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+    <div className="max-w-5xl mt-20 mb-20 mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
       <div className="flex flex-col md:flex-row">
         {/* Left Side - Contact Info */}
         <div className="md:w-1/2 bg-gradient-to-br from-blue-500 to-blue-600 p-8 text-white">
@@ -43,7 +43,17 @@ export  function ContactForm() {
             </div>
             <div className="flex items-center space-x-3">
               <Globe className="w-5 h-5" />
-              <span>www.growingwomenpk.org</span>
+              <a href="https://www.growingwomenpk.org" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                www.growingwomenpk.org
+              </a>
+            </div>
+            <div className="flex items-center space-x-4 mt-4">
+              <a href="https://www.facebook.com/growingwomenpk" target="_blank" rel="noopener noreferrer" className="hover:text-gray-200 transition-colors">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="https://www.instagram.com/growingwomenpk" target="_blank" rel="noopener noreferrer" className="hover:text-gray-200 transition-colors">
+                <Instagram className="w-5 h-5" />
+              </a>
             </div>
           </div>
         </div>

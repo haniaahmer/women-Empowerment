@@ -2,14 +2,14 @@ import React from 'react';
 
 const ProfileCard = () => {
   return (
-    <div className="bg-gray-50 py-20 px-6">
+    <div className="bg-gray-50 py-20 px-20 md:pl-50">
 
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">
           Founder Message
         </h2>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 items-start">
           {/* Left Column */}
           <div>
             <div className="mb-6">
@@ -29,7 +29,7 @@ const ProfileCard = () => {
               <img 
                 src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/768742c7-18f8-4ed0-8b44-3f5c8b168a50/di0y8fx-465c66e3-5e04-4f97-b8da-0379b6ecf192.jpg/v1/fill/w_564,h_997,q_75,strp/simple_girl_pic_by_mastdpstatus_di0y8fx-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTk3IiwicGF0aCI6IlwvZlwvNzY4NzQyYzctMThmOC00ZWQwLThiNDQtM2Y1YzhiMTY4YTUwXC9kaTB5OGZ4LTQ2NWM2NmUzLTVlMDQtNGY5Ny1iOGRhLTAzNzliNmVjZjE5Mi5qcGciLCJ3aWR0aCI6Ijw9NTY0In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.hlMKhsTfhKb3Dpg6xzq5AYFuxTy93x3NeutPNqdJaiI" 
                 alt="Romana Ch. Profile" 
-                className="w-full h-159 max-w-sm object-cover rounded-lg shadow-lg"
+                className="w-full h-146 max-w-sm object-cover rounded-lg shadow-lg"
               />
             </div>
 
@@ -38,7 +38,7 @@ const ProfileCard = () => {
           </div>
 
           {/* Right Column */}
-          <div className="space-y-3 md:mt-30 l ">
+          <div className="space-y-2 md:mt-30">
             <div>
               {/* Empty div for spacing consistency */}
             </div>

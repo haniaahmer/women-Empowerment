@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
@@ -79,9 +79,33 @@ export function Testimonial() {
 
   const scroll = (direction) => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: direction * 300, behavior: "smooth" });
+      scrollRef.current.scrollBy({ left: direction * 400, behavior: "smooth" });
     }
   };
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    let currentIndex = 0;
+
+    const autoScroll = () => {
+      if (scrollContainer) {
+        const cardWidth = scrollContainer.querySelector("div").offsetWidth + 24; // Card width + gap
+        const maxIndex = testimonials.length - 1;
+
+        if (currentIndex >= maxIndex) {
+          currentIndex = 0;
+          scrollContainer.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          currentIndex++;
+          scrollContainer.scrollBy({ left: cardWidth, behavior: "smooth" });
+        }
+      }
+    };
+
+    const scrollInterval = setInterval(autoScroll, 3000); // Pause for 3 seconds on each testimonial
+
+    return () => clearInterval(scrollInterval); // Cleanup on unmount
+  }, []);
 
   return (
     <section className="py-16 px-4 bg-white relative">
@@ -96,41 +120,41 @@ export function Testimonial() {
         {/* Scroll Buttons */}
         <button
           onClick={() => scroll(-1)}
-          className="absolute top-1/2 -translate-y-1/2 left-2 z-10 bg-yellow-600 text-white p-2 rounded-full shadow hover:bg-yellow-700"
+          className="absolute top-1/2 -translate-y-1/2 left-2 z-10 bg-yellow-600 text-white p-3 rounded-full shadow hover:bg-yellow-700"
           aria-label="Scroll left"
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft size={28} />
         </button>
         <button
           onClick={() => scroll(1)}
-          className="absolute top-1/2 -translate-y-1/2 right-2 z-10 bg-yellow-600 text-white p-2 rounded-full shadow hover:bg-yellow-700"
+          className="absolute top-1/2 -translate-y-1/2 right-2 z-10 bg-yellow-600 text-white p-3 rounded-full shadow hover:bg-yellow-700"
           aria-label="Scroll right"
         >
-          <ChevronRight size={24} />
+          <ChevronRight size={28} />
         </button>
 
         {/* Scrollable Card Container */}
         <div
           ref={scrollRef}
-          className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory gap-4 scrollbar-hide"
+          className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory gap-6 scrollbar-hide"
         >
           {testimonials.map((item) => (
             <div
               key={item.id}
-              className="w-[calc(100%/1.2)] sm:w-[calc(100%/2.2)] md:w-[calc(100%/3.2)] lg:w-[calc(100%/4.2)] flex-shrink-0 snap-start bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition"
+              className="w-[calc(100%/1)] sm:w-[calc(100%/2)] md:w-[calc(100%/3)] lg:w-[calc(100%/4)] flex-shrink-0 snap-start bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition"
             >
               <img
                 src={item.avatar}
                 alt={item.name}
-                className="w-16 h-16 rounded-full mx-auto object-cover shadow mb-4"
+                className="w-20 h-20 rounded-full mx-auto object-cover shadow-md mb-6"
               />
-              <h3 className="text-lg font-semibold text-foreground">
+              <h3 className="text-xl font-semibold text-foreground mb-2">
                 {item.name}
               </h3>
-              <p className="text-muted-foreground text-sm mb-3">
+              <p className="text-muted-foreground text-base mb-4">
                 {item.title} of {item.company}
               </p>
-              <blockquote className="text-sm text-foreground italic">
+              <blockquote className="text-base text-foreground italic">
                 "{item.quote}"
               </blockquote>
             </div>

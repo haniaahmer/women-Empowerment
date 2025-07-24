@@ -62,7 +62,7 @@ export  function SignInForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-purple-50 to-white flex items-center justify-center p-4">
+    <div className="min-h-screen  mt-12 mb-20 bg-white flex items-center justify-center p-4">
       <div className="max-w-md w-full">
         {/* Logo/Header Section */}
         <div className="text-center mb-8">

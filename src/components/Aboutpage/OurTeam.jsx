@@ -1,59 +1,65 @@
-import React, { useState } from 'react';
-import {  ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const OurTeam = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   
-  // Sample volunteer data - you can replace with actual data
   const volunteers = [
     {
       id: 1,
       name: "Volunteer",
       title: "Volunteer",
       image: "https://img.freepik.com/free-photo/young-beautiful-girl-posing-black-leather-jacket-park_1153-8104.jpg?semt=ais_hybrid&w=740"
-     
     },
     {
       id: 2,
       name: "Volunteer",
       title: "Volunteer", 
       image: null,
-     
     },
     {
       id: 3,
       name: "Volunteer",
       title: "Volunteer",
       image: null,
-     
     },
     {
       id: 4,
       name: "Sarah Johnson",
       title: "Community Outreach",
       image: null,
-     
     },
     {
       id: 5,
       name: "Mike Chen",
       title: "Event Coordinator",
       image: null,
-   
     }
   ];
 
+  const totalSlides = Math.max(1, volunteers.length - 2);
+
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % Math.max(1, volunteers.length - 2));
+    setCurrentSlide((prev) => (prev + 1) % totalSlides);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + Math.max(1, volunteers.length - 2)) % Math.max(1, volunteers.length - 2));
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
   const goToSlide = (index) => {
     setCurrentSlide(index);
   };
+
+  useEffect(() => {
+    const autoScroll = () => {
+      setCurrentSlide((prev) => (prev + 1) % totalSlides);
+    };
+
+    const scrollInterval = setInterval(autoScroll, 3000); // Auto-scroll every 3 seconds
+
+    return () => clearInterval(scrollInterval); // Cleanup on unmount
+  }, [totalSlides]);
 
   return (
     <div className="bg-amber-50 py-16 px-4 min-h-screen flex flex-col justify-center">
@@ -97,8 +103,6 @@ const OurTeam = () => {
                       {volunteer.title}
                     </p>
                   </div>
-                  
-              
                 </div>
               </div>
             ))}
@@ -118,7 +122,7 @@ const OurTeam = () => {
           
           {/* Dot Indicators */}
           <div className="flex space-x-2">
-            {Array.from({ length: Math.max(1, volunteers.length - 2) }).map((_, index) => (
+            {Array.from({ length: totalSlides }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}

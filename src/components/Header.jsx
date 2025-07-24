@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { LogIn, ChevronDown } from "lucide-react";
@@ -7,6 +8,11 @@ const navItems = ["Home", "About", "Contact"];
 const opportunitiesLinks = [
   { label: "Programs", href: "/programs" },
   { label: "Events", href: "/events" },
+];
+
+const mediaLinks = [
+  { label: "Podcast", href: "/podcast" },
+  { label: "Blog", href: "/blog" },
 ];
 
 const Logo = () => (
@@ -33,32 +39,27 @@ const Logo = () => (
   </div>
 );
 
-const Dropdown = ({ label, links, onItemClick }) => {
-  const [open, setOpen] = useState(false);
-
+const Dropdown = ({ label, links, onItemClick, isOpen, setOpen }) => {
   return (
     <div className="relative">
       <button
         className="text-white hover:text-gray-200 transition-colors flex items-center gap-1"
-        onClick={() => setOpen(!open)}
+        onClick={() => setOpen(label)}
         aria-haspopup="true"
-        aria-expanded={open}
+        aria-expanded={isOpen}
       >
         {label}
         <ChevronDown className="w-4 h-4" />
       </button>
 
-      {open && (
+      {isOpen && (
         <ul className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-50">
           {links.map(({ label, href }) => (
             <li key={label}>
               <Link
                 to={href}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                onClick={() => {
-                  setOpen(false);
-                  onItemClick();
-                }}
+                onClick={onItemClick}
               >
                 {label}
               </Link>
@@ -94,25 +95,43 @@ const MobileMenuButton = ({ onClick }) => (
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+
   const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
-  const handleItemClick = () => setMobileMenuOpen(false);
+
+  const handleItemClick = () => {
+    setMobileMenuOpen(false);
+    setOpenDropdown(null);
+  };
 
   return (
     <nav className="bg-[#9B9BBD] py-4 px-4 sm:px-6 lg:px-10 shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Logo />
         <div className="hidden md:flex space-x-6 items-center">
-          {navItems.map((item) => {
+          {navItems.map((item, index) => {
             const route = item === "Home" ? "/" : `/${item.toLowerCase()}`;
             return (
-              <Link
-                key={item}
-                to={route}
-                className="text-white hover:text-gray-200 transition-colors"
-                onClick={handleItemClick}
-              >
-                {item}
-              </Link>
+              <React.Fragment key={item}>
+                <Link
+                  to={route}
+                  className="text-white hover:text-gray-200 transition-colors"
+                  onClick={handleItemClick}
+                >
+                  {item}
+                </Link>
+                {item === "About" && (
+                  <Dropdown
+                    label="Media"
+                    links={mediaLinks}
+                    onItemClick={handleItemClick}
+                    isOpen={openDropdown === "Media"}
+                    setOpen={(label) =>
+                      setOpenDropdown(openDropdown === label ? null : label)
+                    }
+                  />
+                )}
+              </React.Fragment>
             );
           })}
 
@@ -120,6 +139,10 @@ const Header = () => {
             label="Opportunities"
             links={opportunitiesLinks}
             onItemClick={handleItemClick}
+            isOpen={openDropdown === "Opportunities"}
+            setOpen={(label) =>
+              setOpenDropdown(openDropdown === label ? null : label)
+            }
           />
 
           <Link
@@ -132,7 +155,7 @@ const Header = () => {
 
           <Link
             to="/signin"
-            className="text-white hover:text-gray-200 transition-colors flex items-center gap-1"
+            className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full font-semibold transition-colors flex items-center gap-1"
             onClick={handleItemClick}
           >
             <LogIn size={16} />
@@ -147,14 +170,26 @@ const Header = () => {
           {navItems.map((item) => {
             const route = item === "Home" ? "/" : `/${item.toLowerCase()}`;
             return (
-              <Link
-                key={item}
-                to={route}
-                className="text-white hover:text-gray-200 transition-colors block"
-                onClick={handleItemClick}
-              >
-                {item}
-              </Link>
+              <React.Fragment key={item}>
+                <Link
+                  to={route}
+                  className="text-white hover:text-gray-200 transition-colors block"
+                  onClick={handleItemClick}
+                >
+                  {item}
+                </Link>
+                {item === "About" &&
+                  mediaLinks.map(({ label, href }) => (
+                    <Link
+                      key={label}
+                      to={href}
+                      className="text-white hover:text-gray-200 transition-colors block pl-4"
+                      onClick={handleItemClick}
+                    >
+                      {label}
+                    </Link>
+                  ))}
+              </React.Fragment>
             );
           })}
 
@@ -162,7 +197,7 @@ const Header = () => {
             <Link
               key={label}
               to={href}
-              className="text-white hover:text-gray-200 transition-colors block"
+              className="text-white hover:text-gray-200 transition-colors block pl-4"
               onClick={handleItemClick}
             >
               {label}

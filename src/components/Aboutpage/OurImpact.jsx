@@ -18,8 +18,8 @@ const OurImpact = () => {
     const colors = ["#8B5A6B", "#6B4C93", "#A4B84A", "#7BAE3F", "#B5869F"];
 
     const scale = window.devicePixelRatio || 1;
-    const width = 500;
-    const height = 500;
+    const width = 300; // Match container width
+    const height = 300; // Match container height
 
     canvas.width = width * scale;
     canvas.height = height * scale;
@@ -115,19 +115,19 @@ const OurImpact = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-green-50 p-6 overflow-x-hidden">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-green-50 p-4 overflow-x-hidden">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-black">Our Ongoing Projects</h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-10 items-start">
           {/* Project Cards */}
-          <div className="space-y-6">
+          <div className="space-y-2">
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4"
+                className="bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4"
                 style={{ borderLeftColor: project.color }}
               >
                 <div className="flex items-start space-x-4">

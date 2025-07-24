@@ -29,7 +29,7 @@ const JoinOurEfforts = () => {
             onClick={handleVolunteerClick}
             className="bg-yellow-600 hover:bg-yellow-800 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-200 min-w-[160px]"
           >
-            Join as a volunteer
+            Join Us
           </button>
           
           <button
