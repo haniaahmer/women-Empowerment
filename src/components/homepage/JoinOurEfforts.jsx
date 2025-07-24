@@ -1,9 +1,9 @@
 import React from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const JoinOurEfforts = () => {
+  const navigate = useNavigate();
   const handleVolunteerClick = () => {
-    console.log('Volunteer button clicked');
-    // Add your volunteer logic here
+    navigate('/join');
   };
 
   const handleDonateClick = () => {

@@ -30,7 +30,7 @@ export function ContactForm() {
     <div className="max-w-5xl mt-20 mb-20 mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
       <div className="flex flex-col md:flex-row">
         {/* Left Side - Contact Info */}
-        <div className="md:w-1/2 bg-gradient-to-br from-blue-500 to-blue-600 p-8 text-white">
+        <div className="md:w-1/2 bg-[#7F264B] p-8 text-white">
           <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
@@ -100,7 +100,7 @@ export function ContactForm() {
             <button
               type="button"
               onClick={handleSubmit}
-              className="w-full bg-blue-500 text-white font-medium py-2 rounded-md hover:bg-blue-600 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="w-full bg-yellow-700 text-white font-medium py-2 rounded-md hover:bg-yellow-800 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
               Send Message
             </button>

@@ -33,13 +33,13 @@ export  function SignUpForm() {
   return (
     <div className="max-w-2xl  mt-20 mx-auto bg-white rounded-xl shadow-lg p-6 mb-20">
       <div className="flex items-center space-x-2 mb-6">
-        <Heart className="w-6 h-6 text-blue-500" />
+        <Heart className="w-6 h-6 text-[#7F264B]" />
         <h2 className="text-2xl font-bold text-gray-800">Sign Up</h2>
       </div>
       <div className="space-y-4">
         <div>
           <label className="block text-gray-700 font-medium mb-1 flex items-center">
-            <User className="w-4 h-4 mr-2 text-blue-500" />
+            <User className="w-5 h-5 mr-2 text-[#7F264B]"/>
             Name
           </label>
           <input
@@ -54,7 +54,7 @@ export  function SignUpForm() {
         </div>
         <div>
           <label className="block text-gray-700 font-medium mb-1 flex items-center">
-            <Mail className="w-4 h-4 mr-2 text-blue-500" />
+            <Mail className="w-5 h-5 mr-2 text-[#7F264B]" />
             Email
           </label>
           <input
@@ -64,12 +64,12 @@ export  function SignUpForm() {
             onChange={handleInputChange}
             placeholder="Your Email"
             required
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all placeholder-gray-400"
+            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#7F264B] transition-all placeholder-gray-400"
           />
         </div>
         <div>
           <label className="block text-gray-700 font-medium mb-1 flex items-center">
-            <Phone className="w-4 h-4 mr-2 text-blue-500" />
+            <Phone className="w-5 h-5 mr-2 text-[#7F264B]" />
             Phone Number
           </label>
           <input
@@ -79,12 +79,12 @@ export  function SignUpForm() {
             onChange={handleInputChange}
             placeholder="Your Phone Number"
             required
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all placeholder-gray-400"
+            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#7F264B] transition-all placeholder-gray-400"
           />
         </div>
         <div>
           <label className="block text-gray-700 font-medium mb-1 flex items-center">
-            <Lock className="w-4 h-4 mr-2 text-blue-500" />
+            <Lock className="w-5 h-5 mr-2 text-[#7F264B]" />
             Password
           </label>
           <input
@@ -94,7 +94,7 @@ export  function SignUpForm() {
             onChange={handleInputChange}
             placeholder="Your Password"
             required
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all placeholder-gray-400"
+            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#7F264B] transition-all placeholder-gray-400"
           />
         </div>
         <div>
@@ -104,7 +104,7 @@ export  function SignUpForm() {
             value={formData.signupType}
             onChange={handleInputChange}
             required
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#7F264B] transition-all"
           >
             <option value="">Select an option</option>
             <option value="donor">As a Donor</option>
@@ -115,7 +115,7 @@ export  function SignUpForm() {
         <button
           type="button"
           onClick={handleSubmit}
-          className="w-full bg-blue-500 text-white font-medium py-2 rounded-md hover:bg-blue-600 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          className="w-full bg-yellow-700 text-white font-medium py-2 rounded-md hover:bg-yellow-800 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           Sign Up
         </button>

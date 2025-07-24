@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Link } from "react-router-dom";
 const AllPrograms = () => {
   const [filter, setFilter] = useState('all');
 
@@ -52,7 +52,7 @@ const AllPrograms = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen p-6">
+    <div className="bg-gray-50 mt-20 min-h-screen p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-4">
@@ -77,11 +77,10 @@ const AllPrograms = () => {
               <button
                 key={type}
                 onClick={() => setFilter(type)}
-                className={`px-6 py-2 rounded-lg font-medium transition-colors ${
-                  filter === type
+                className={`px-6 py-2 rounded-lg font-medium transition-colors ${filter === type
                     ? 'bg-yellow-700 text-white'
                     : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
-                }`}
+                  }`}
               >
                 {type.toUpperCase()}
               </button>
@@ -130,10 +129,12 @@ const AllPrograms = () => {
                 <p className="text-gray-600 text-sm mb-4 line-clamp-2">
                   {program.description}
                 </p>
-
-                <div className="w-full bg-yellow-700 text-white py-3 px-4 rounded-lg font-medium text-center cursor-default">
+                <Link
+                  to="/singleProgram"
+                  className="w-full bg-yellow-700 text-white py-3 px-4 rounded-lg font-medium text-center cursor-pointer block"
+                >
                   VIEW DETAILS
-                </div>
+                </Link>
               </div>
             </div>
           ))}

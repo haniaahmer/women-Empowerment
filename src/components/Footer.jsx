@@ -79,13 +79,13 @@ const Footer = () => {
             <div className="px-1 flex flex-col sm:flex-row gap-3 w-full">
               <button
                 type="submit"
-                className="bg-[#EACE6A] text-white px-6 py-2 rounded-full font-semibold hover:bg-yellow-900 focus:outline-none focus:ring-2 focus:ring-white transition w-full sm:w-auto"
+                className="bg-yellow-700 text-white px-6 py-2 rounded-full font-semibold hover:bg-yellow-900 focus:outline-none focus:ring-2 focus:ring-white transition w-full sm:w-auto"
               >
                 Subscribe
               </button>
               <a
                 href="#membership"
-                className="bg-[#EACE6A] px-6 py-2 rounded-full text-white font-semibold hover:bg-yellow-500 transition w-full sm:w-auto text-center"
+                className="bg-yellow-700 px-6 py-2 rounded-full text-white font-semibold hover:bg-yellow-900 transition w-full sm:w-auto text-center"
               >
                 Become a Member
               </a>

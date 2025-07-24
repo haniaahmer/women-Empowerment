@@ -1,8 +1,7 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { LogIn, ChevronDown } from "lucide-react";
-import logo from '../assets/logo2.png'
+import { ChevronDown } from "lucide-react";
+import logo from '../assets/logo2.png';
 
 const navItems = ["Home", "About", "Contact"];
 
@@ -19,7 +18,7 @@ const mediaLinks = [
 const Logo = () => (
   <div className="flex items-center">
     <div className="bg-white rounded-full p-2 mr-5">
-     <img
+      <img
         src={logo}
         alt="Site Logo"
         className="h-12 w-auto"
@@ -35,7 +34,7 @@ const Dropdown = ({ label, links, onItemClick, isOpen, setOpen }) => {
   return (
     <div className="relative">
       <button
-        className="text-white hover:text-gray-200 transition-colors flex items-center gap-1"
+        className="text-white hover:text-gray-200 transition-colors flex items-center gap-1 text-lg"
         onClick={() => setOpen(label)}
         aria-haspopup="true"
         aria-expanded={isOpen}
@@ -50,7 +49,7 @@ const Dropdown = ({ label, links, onItemClick, isOpen, setOpen }) => {
             <li key={label}>
               <Link
                 to={href}
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                className="block px-4 py-2 text-gray-700 hover:bg-gray-100 text-base"
                 onClick={onItemClick}
               >
                 {label}
@@ -97,17 +96,17 @@ const Header = () => {
   };
 
   return (
-    <nav className="bg-[#7F264B] py-4 px-4 sm:px-6 lg:px-10 shadow-md sticky top-0 z-50">
+    <nav className="bg-[#7F264B] py-3 px-4 sm:px-6 lg:px-10 shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Logo />
         <div className="hidden md:flex space-x-6 items-center">
-          {navItems.map((item, index) => {
+          {navItems.map((item) => {
             const route = item === "Home" ? "/" : `/${item.toLowerCase()}`;
             return (
               <React.Fragment key={item}>
                 <Link
                   to={route}
-                  className="text-white hover:text-gray-200 transition-colors"
+                  className="text-white hover:text-gray-200 transition-colors text-lg"
                   onClick={handleItemClick}
                 >
                   {item}
@@ -139,7 +138,7 @@ const Header = () => {
 
           <Link
             to="/join"
-            className="bg-[#EACE6A] hover:bg-yellow-600 text-white px-4 py-2 rounded-full font-semibold transition-colors"
+            className="bg-yellow-600 hover:bg-yellow-800 text-white px-4 py-2 rounded-full font-semibold transition-colors text-lg"
             onClick={handleItemClick}
           >
             Join Us
@@ -147,10 +146,10 @@ const Header = () => {
 
           <Link
             to="/signin"
-            className="bg-[#EACE6A] hover:bg-yellow-600 text-white px-4 py-2 rounded-full font-semibold transition-colors flex items-center gap-1"
+            className="bg-yellow-600 hover:bg-yellow-800 text-white px-4 py-2 rounded-full font-semibold transition-colors flex items-center gap-1 text-lg"
             onClick={handleItemClick}
           >
-            <LogIn size={16} />
+            
             Sign In
           </Link>
         </div>
@@ -158,14 +157,14 @@ const Header = () => {
       </div>
 
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#9B9BBD] px-4 pt-4 pb-6 space-y-4 animate-slide-down">
+        <div className="md:hidden bg-[#7F264B] px-4 pt-4 pb-6 space-y-4 animate-slide-down">
           {navItems.map((item) => {
             const route = item === "Home" ? "/" : `/${item.toLowerCase()}`;
             return (
               <React.Fragment key={item}>
                 <Link
                   to={route}
-                  className="text-white hover:text-gray-200 transition-colors block"
+                  className="text-white hover:text-gray-200 transition-colors block text-lg"
                   onClick={handleItemClick}
                 >
                   {item}
@@ -175,7 +174,7 @@ const Header = () => {
                     <Link
                       key={label}
                       to={href}
-                      className="text-white hover:text-gray-200 transition-colors block pl-4"
+                      className="text-white hover:text-gray-200 transition-colors block pl-4 text-base"
                       onClick={handleItemClick}
                     >
                       {label}
@@ -189,7 +188,7 @@ const Header = () => {
             <Link
               key={label}
               to={href}
-              className="text-white hover:text-gray-200 transition-colors block pl-4"
+              className="text-white hover:text-gray-200 transition-colors block pl-4 text-base"
               onClick={handleItemClick}
             >
               {label}
@@ -198,7 +197,7 @@ const Header = () => {
 
           <Link
             to="/join"
-            className="text-white hover:text-gray-200 transition-colors block"
+            className="text-white hover:text-gray-200 transition-colors block text-lg"
             onClick={handleItemClick}
           >
             Join Us
@@ -206,7 +205,7 @@ const Header = () => {
 
           <Link
             to="/signin"
-            className="flex items-center gap-1 text-white hover:text-gray-200"
+            className="flex items-center gap-1 text-white hover:text-gray-200 text-lg"
             onClick={handleItemClick}
           >
             <LogIn size={16} />
