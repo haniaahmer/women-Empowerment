@@ -23,7 +23,7 @@ const quickLinks = [
 
 const Footer = () => {
   return (
-    <footer className="bg-[#9B9BBD] text-white mt-auto w-full">
+    <footer className="bg-[#7F264B] text-white mt-auto w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-9 grid grid-cols-1 md:grid-cols-3 gap-7">
         {/* Contact Info */}
         <div className="space-y-4">
@@ -79,13 +79,13 @@ const Footer = () => {
             <div className="px-1 flex flex-col sm:flex-row gap-3 w-full">
               <button
                 type="submit"
-                className="bg-yellow-700 text-white px-6 py-2 rounded-full font-semibold hover:bg-yellow-900 focus:outline-none focus:ring-2 focus:ring-white transition w-full sm:w-auto"
+                className="bg-[#EACE6A] text-white px-6 py-2 rounded-full font-semibold hover:bg-yellow-900 focus:outline-none focus:ring-2 focus:ring-white transition w-full sm:w-auto"
               >
                 Subscribe
               </button>
               <a
                 href="#membership"
-                className="bg-yellow-700 px-6 py-2 rounded-full text-white font-semibold hover:bg-yellow-900 transition w-full sm:w-auto text-center"
+                className="bg-[#EACE6A] px-6 py-2 rounded-full text-white font-semibold hover:bg-yellow-500 transition w-full sm:w-auto text-center"
               >
                 Become a Member
               </a>

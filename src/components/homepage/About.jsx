@@ -1,6 +1,6 @@
 // src/components/AboutSection.jsx
 import React from 'react';
-import aboutImg from '../../assets/WE.jpg';
+import aboutImg from '../../assets/logo2.png';
 
 const About = () => {
   return (

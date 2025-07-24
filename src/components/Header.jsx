@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { LogIn, ChevronDown } from "lucide-react";
+import logo from '../assets/logo2.png'
 
 const navItems = ["Home", "About", "Contact"];
 
@@ -17,21 +18,12 @@ const mediaLinks = [
 
 const Logo = () => (
   <div className="flex items-center">
-    <div className="bg-white rounded-full p-2 mr-3">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-8 w-8 text-[#d4d4e6]"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-        />
-      </svg>
+    <div className="bg-white rounded-full p-2 mr-5">
+     <img
+        src={logo}
+        alt="Site Logo"
+        className="h-12 w-auto"
+      />
     </div>
     <span className="text-white font-bold text-xl hidden sm:inline">
       Women Empowerment
@@ -147,7 +139,7 @@ const Header = () => {
 
           <Link
             to="/join"
-            className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full font-semibold transition-colors"
+            className="bg-[#EACE6A] hover:bg-yellow-600 text-white px-4 py-2 rounded-full font-semibold transition-colors"
             onClick={handleItemClick}
           >
             Join Us
@@ -155,7 +147,7 @@ const Header = () => {
 
           <Link
             to="/signin"
-            className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full font-semibold transition-colors flex items-center gap-1"
+            className="bg-[#EACE6A] hover:bg-yellow-600 text-white px-4 py-2 rounded-full font-semibold transition-colors flex items-center gap-1"
             onClick={handleItemClick}
           >
             <LogIn size={16} />
