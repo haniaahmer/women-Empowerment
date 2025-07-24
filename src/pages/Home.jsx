@@ -14,11 +14,12 @@ const Home = () => {
     <Layout>
      <Hero/>
      <About/>
-     <Gallery/>
+     
      <UpcomingEvents/>
      <Testimonial/>
      <JoinOurEfforts/>
      <RecentBlogPosts/>
+     <Gallery/>
     </Layout>
   );
 };

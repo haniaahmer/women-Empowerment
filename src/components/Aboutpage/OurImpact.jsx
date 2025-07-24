@@ -18,8 +18,8 @@ const OurImpact = () => {
     const colors = ["#8B5A6B", "#6B4C93", "#A4B84A", "#7BAE3F", "#B5869F"];
 
     const scale = window.devicePixelRatio || 1;
-    const width = 300; // Match container width
-    const height = 300; // Match container height
+    const width = 400;
+    const height = 400;
 
     canvas.width = width * scale;
     canvas.height = height * scale;
@@ -27,13 +27,14 @@ const OurImpact = () => {
     canvas.style.height = `${height}px`;
     ctx.scale(scale, scale);
 
-    let startAngle = 0;
-    const radius = 140;
     const centerX = width / 2;
     const centerY = height / 2;
+    const radius = 130;
 
-    ctx.font = '12px Arial';
+    ctx.font = '12px sans-serif';
     ctx.textBaseline = 'middle';
+
+    let startAngle = 0;
 
     data.forEach((value, index) => {
       const sliceAngle = (value / 100) * 2 * Math.PI;
@@ -42,36 +43,58 @@ const OurImpact = () => {
       ctx.beginPath();
       ctx.moveTo(centerX, centerY);
       ctx.arc(centerX, centerY, radius, startAngle, startAngle + sliceAngle);
+      ctx.closePath();
       ctx.fillStyle = colors[index];
       ctx.fill();
-      ctx.closePath();
 
-      // Midpoint angle
+      // Midpoint angle for label and line
       const midAngle = startAngle + sliceAngle / 2;
-      const outerRadius = radius + 30;
+      const lineStartX = centerX + Math.cos(midAngle) * radius;
+      const lineStartY = centerY + Math.sin(midAngle) * radius;
+      const lineEndX = centerX + Math.cos(midAngle) * (radius + 20);
+      const lineEndY = centerY + Math.sin(midAngle) * (radius + 20);
 
-      let labelX = centerX + Math.cos(midAngle) * outerRadius;
-      let labelY = centerY + Math.sin(midAngle) * outerRadius;
+      // Determine label position
+      let labelX = centerX + Math.cos(midAngle) * (radius + 80);
+      let labelY = centerY + Math.sin(midAngle) * (radius + 80);
+      const alignRight = labelX < centerX;
 
-      ctx.fillStyle = '#000';
-      ctx.textAlign = labelX < centerX ? 'right' : 'left';
+      // Draw leader line
+      ctx.beginPath();
+      ctx.moveTo(lineStartX, lineStartY);
+      ctx.lineTo(lineEndX, lineEndY);
+      ctx.lineTo(labelX, labelY);
+      ctx.strokeStyle = colors[index];
+      ctx.lineWidth = 1;
+      ctx.stroke();
 
+      // Format and wrap label
       const label = `${labels[index]} (${value}%)`;
       const words = label.split(' ');
       let line = '';
       let yOffset = labelY;
+      const lineHeight = 16;
+      const maxWidth = 130;
 
+      if (alignRight) {
+        labelX -= 10;
+        ctx.textAlign = 'right';
+      } else {
+        labelX += 10;
+        ctx.textAlign = 'left';
+      }
+
+      ctx.fillStyle = '#111';
       words.forEach((word, i) => {
         const testLine = line + word + ' ';
-        const { width: testWidth } = ctx.measureText(testLine);
-        if (testWidth > 120 && line) {
+        const testWidth = ctx.measureText(testLine).width;
+        if (testWidth > maxWidth && line) {
           ctx.fillText(line, labelX, yOffset);
           line = word + ' ';
-          yOffset += 14;
+          yOffset += lineHeight;
         } else {
           line = testLine;
         }
-
         if (i === words.length - 1) {
           ctx.fillText(line, labelX, yOffset);
         }
@@ -116,7 +139,7 @@ const OurImpact = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-green-50 p-4 overflow-x-hidden">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-black">Our Ongoing Projects</h2>
         </div>
@@ -155,8 +178,8 @@ const OurImpact = () => {
             <h3 className="text-4xl font-bold text-gray-800 mb-6 text-center">
               Project Distribution
             </h3>
-            <div className="w-[300px] h-[300px] relative">
-              <canvas ref={canvasRef} className="w-full h-full" />
+            <div className="w-[400px] h-[400px] relative">
+              <canvas ref={canvasRef} className="w-40 h-40" />
             </div>
           </div>
         </div>
