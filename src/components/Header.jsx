@@ -1,14 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { LogIn, ChevronDown } from "lucide-react";
 
 const navItems = ["Home", "About", "Contact"];
-
-const joinUsLinks = [
-  { label: "Become a Member", href: "/membership" },
-  { label: "Volunteer", href: "/volunteer" },
-  { label: "Partner With Us", href: "/partner" },
-];
 
 const opportunitiesLinks = [
   { label: "Programs", href: "/programs" },
@@ -39,33 +33,14 @@ const Logo = () => (
   </div>
 );
 
-const Dropdown = ({ label, links, onItemClick, isButton }) => {
+const Dropdown = ({ label, links, onItemClick }) => {
   const [open, setOpen] = useState(false);
-  const timeoutRef = useRef(null);
-
-  const handleOpen = () => {
-    clearTimeout(timeoutRef.current);
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    timeoutRef.current = setTimeout(() => setOpen(false), 150);
-  };
-
-  useEffect(() => () => clearTimeout(timeoutRef.current), []);
-
-  const baseClasses = isButton
-    ? "bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full font-semibold transition-colors"
-    : "text-white hover:text-gray-200 transition-colors";
 
   return (
-    <div
-      className="relative"
-      onMouseEnter={handleOpen}
-      onMouseLeave={handleClose}
-    >
+    <div className="relative">
       <button
-        className={`flex items-center gap-1 ${baseClasses}`}
+        className="text-white hover:text-gray-200 transition-colors flex items-center gap-1"
+        onClick={() => setOpen(!open)}
         aria-haspopup="true"
         aria-expanded={open}
       >
@@ -145,15 +120,15 @@ const Header = () => {
             label="Opportunities"
             links={opportunitiesLinks}
             onItemClick={handleItemClick}
-            isButton={false}
           />
 
-          <Dropdown
-            label="Join Us"
-            links={joinUsLinks}
-            onItemClick={handleItemClick}
-            isButton={true}
-          />
+          <Link
+            to="/join"
+            className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full font-semibold transition-colors"
+            onClick={handleItemClick}
+          >
+            Join Us
+          </Link>
 
           <Link
             to="/signin"
@@ -167,7 +142,6 @@ const Header = () => {
         <MobileMenuButton onClick={toggleMobileMenu} />
       </div>
 
-      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#9B9BBD] px-4 pt-4 pb-6 space-y-4 animate-slide-down">
           {navItems.map((item) => {
@@ -184,36 +158,33 @@ const Header = () => {
             );
           })}
 
-          <div className="space-y-2">
-            {opportunitiesLinks.map(({ label, href }) => (
-              <Link
-                key={label}
-                to={href}
-                className="text-white hover:text-gray-200 transition-colors block"
-                onClick={handleItemClick}
-              >
-                {label}
-              </Link>
-            ))}
-            {joinUsLinks.map(({ label, href }) => (
-              <Link
-                key={label}
-                to={href}
-                className="text-white hover:text-gray-200 transition-colors block"
-                onClick={handleItemClick}
-              >
-                {label}
-              </Link>
-            ))}
+          {opportunitiesLinks.map(({ label, href }) => (
             <Link
-              to="/signin"
-              className="flex items-center gap-1 text-white hover:text-gray-200"
+              key={label}
+              to={href}
+              className="text-white hover:text-gray-200 transition-colors block"
               onClick={handleItemClick}
             >
-              <LogIn size={16} />
-              Sign In
+              {label}
             </Link>
-          </div>
+          ))}
+
+          <Link
+            to="/join"
+            className="text-white hover:text-gray-200 transition-colors block"
+            onClick={handleItemClick}
+          >
+            Join Us
+          </Link>
+
+          <Link
+            to="/signin"
+            className="flex items-center gap-1 text-white hover:text-gray-200"
+            onClick={handleItemClick}
+          >
+            <LogIn size={16} />
+            Sign In
+          </Link>
         </div>
       )}
     </nav>
