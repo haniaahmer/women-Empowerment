@@ -146,12 +146,12 @@ const Header = () => {
           </Link>
 
           <Link
-            to="/signin"
+            to="/login"
             className="bg-yellow-600 hover:bg-yellow-800 text-white px-4 py-2 rounded-full font-semibold transition-colors flex items-center gap-1 text-lg"
             onClick={handleItemClick}
           >
             
-            Sign In
+            Log In
           </Link>
         </div>
         <MobileMenuButton onClick={toggleMobileMenu} />

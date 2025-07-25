@@ -7,7 +7,7 @@ import RecentBlogPosts from '../components/homepage/RecentBlogPosts';
 import UpcomingEvents from '../components/homepage/UpcomingEvents';
 import SuccessStoriesCarousel, { Testimonial } from '../components/homepage/Testimonial';
 import JoinOurEfforts from '../components/homepage/JoinOurEfforts';
-import Gallery, { GalleryC } from '../components/homepage/GalleryC';
+
 
 const Home = () => {
   return (
@@ -19,7 +19,7 @@ const Home = () => {
      <Testimonial/>
      <JoinOurEfforts/>
      <RecentBlogPosts/>
-     <GalleryC/>
+     
     </Layout>
   );
 };

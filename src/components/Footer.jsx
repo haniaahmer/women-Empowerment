@@ -14,7 +14,7 @@ const quickLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Programs", href: "/programs" },
-  { label: "Membership", href: "/membership" },
+  { label: "Membership", href: "/join" },
   { label: "Enrollment Portal", href: "/enrollment-portal" },
   { label: "Podcast", href: "#podcast" },
   { label: "Blog", href: "/blog" },
@@ -84,7 +84,7 @@ const Footer = () => {
                 Subscribe
               </button>
               <a
-                href="#membership"
+                href="/join"
                 className="bg-yellow-700 px-6 py-2 rounded-full text-white font-semibold hover:bg-yellow-900 transition w-full sm:w-auto text-center"
               >
                 Become a Member

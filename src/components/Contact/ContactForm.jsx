@@ -31,7 +31,12 @@ export function ContactForm() {
       <div className="flex flex-col md:flex-row">
         {/* Left Side - Contact Info */}
         <div className="md:w-1/2 bg-[#7F264B] p-8 text-white">
-          <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
+          <h2 className="text-4xl font-bold mb-6">Get in Touch</h2>
+     <div className="text-white max-w-2xl mx-auto mb-6 text-base md:text-lg flex items-center justify-center gap-4 ml-2">
+ 
+  <span>Have questions or want to support our mission? We'd love to hear from you — let’s make a difference together.</span>
+</div>
+
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <MapPin className="w-5 h-5" />

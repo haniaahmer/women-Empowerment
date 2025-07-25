@@ -52,7 +52,7 @@ const EventsComponent = () => {
     <div className="max-w-6xl mx-auto p-8  min-h-screen relative z-0">
       {/* Header Section */}
       <div className="text-center mb-12">
-        <p className="text-teal-500 font-medium text-lg mb-4 tracking-wide">What We Are Doing</p>
+       
         <h1 className="text-4xl md:text-5xl font-bold text-navy-800 leading-tight">
           We Arrange Many Social Events<br />
           For Charity Donations

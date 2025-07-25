@@ -1,5 +1,8 @@
-import { useRef } from 'react';
+// src/components/GalleryC.jsx
+import React, { useRef } from 'react';
 import LightGallery from 'lightgallery/react';
+
+// LightGallery styles
 import 'lightgallery/css/lightgallery.css';
 import 'lightgallery/css/lg-zoom.css';
 import 'lightgallery/css/lg-thumbnail.css';
@@ -8,6 +11,7 @@ import 'lightgallery/css/lg-fullscreen.css';
 import 'lightgallery/css/lg-share.css';
 import 'lightgallery/css/lg-rotate.css';
 
+// LightGallery plugins
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
 import lgAutoplay from 'lightgallery/plugins/autoplay';
@@ -15,10 +19,12 @@ import lgFullscreen from 'lightgallery/plugins/fullscreen';
 import lgShare from 'lightgallery/plugins/share';
 import lgRotate from 'lightgallery/plugins/rotate';
 
-import img1 from "../../assets/download.jpeg";
-import img2 from "../../assets/logo.png";
-import img3 from "../../assets/WE.jpg";
+// Images
+import img1 from '../../assets/download.jpeg';
+import img2 from '../../assets/logo.png';
+import img3 from '../../assets/WE.jpg';
 
+// Styled-components
 import styled from 'styled-components';
 
 const GalleryContainer = styled.div`
@@ -39,12 +45,12 @@ const GridLayout = styled.div`
     display: block;
     overflow: hidden;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     &:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
 
     img {
@@ -74,51 +80,62 @@ const GridLayout = styled.div`
 `;
 
 const images = [
-  { src: img1, alt: "Flag of India", className: "tall" },
-  { src: img2, alt: "Logo", className: "wide" },
-  { src: img3, alt: "WE", className: "square" },
-  { src: img1, alt: "Nature", className: "big" },
-  { src: img2, alt: "Architecture", className: "tall" },
-  { src: img3, alt: "Food", className: "wide" },
-  { src: img1, alt: "Flag of India", className: "tall" },
-  { src: img2, alt: "Logo", className: "wide" },
-  { src: img3, alt: "WE", className: "square" },
-  { src: img1, alt: "Nature", className: "big" },
-  { src: img2, alt: "Architecture", className: "tall" },
-  { src: img3, alt: "Food", className: "wide" },
+  { src: img1, alt: 'Flag of India', className: 'tall' },
+  { src: img2, alt: 'Logo', className: 'wide' },
+  { src: img3, alt: 'WE', className: 'square' },
+  { src: img1, alt: 'Nature', className: 'big' },
+  { src: img2, alt: 'Architecture', className: 'tall' },
+  { src: img3, alt: 'Food', className: 'wide' },
+  { src: img1, alt: 'Flag of India', className: 'tall' },
+  { src: img2, alt: 'Logo', className: 'wide' },
+  { src: img3, alt: 'WE', className: 'square' },
+  { src: img1, alt: 'Nature', className: 'big' },
+  { src: img2, alt: 'Architecture', className: 'tall' },
+  { src: img3, alt: 'Food', className: 'wide' },
 ];
 
-export function GalleryC() {
+const GalleryC = () => {
   const lightGalleryRef = useRef(null);
 
   return (
     <GalleryContainer>
+      <div className="text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold text-navy-800 leading-tight mb-5">
+          Gallery
+        </h1>
+        <h3 className="text-center text-gray-600 max-w-2xl mx-auto mb-8 text-base md:text-lg">
+  A glimpse into our journey — empowering communities, uplifting lives, and creating lasting impact.
+</h3>
+
+      </div>
+
       <LightGallery
         ref={lightGalleryRef}
-        speed={500}
-        plugins={[lgThumbnail, lgZoom, lgAutoplay, lgFullscreen, lgRotate, lgShare]}
+        plugins={[
+          lgThumbnail,
+          lgZoom,
+          lgAutoplay,
+          lgFullscreen,
+          lgRotate,
+          lgShare,
+        ]}
         mode="lg-slide"
-        zoomSettings={{
-          scale: 2,
-          zoomOut: true,
-          actualSize: true
-        }}
-        controls={true}
-        slideEndAnimation={true}
-        hideBarsDelay={2000}
-        closable={false}
+        speed={500}
+        closable={true}
         loop={true}
-        escKey={true}
-        keyPress={true}
         download={false}
         counter={true}
-        enableDrag={true}
-        enableSwipe={true}
+        progressBar={true}
         autoplay={true}
         pause={3000}
-        progressBar={true}
-        showAfterLoad={true}
+        escKey={true}
+        keyPress={true}
+        enableDrag={true}
+        enableSwipe={true}
         selector=".gallery-item"
+        zoomFromOrigin={true}
+        hideBarsDelay={2000}
+        showAfterLoad={true}
       >
         <GridLayout>
           {images.map((image, index) => (
@@ -129,17 +146,13 @@ export function GalleryC() {
               data-sub-html={`<h4>${image.alt}</h4>`}
               data-lg-size="1400-933"
             >
-              <img
-                alt={image.alt}
-                src={image.src}
-                loading="lazy"
-              />
+              <img src={image.src} alt={image.alt} loading="lazy" />
             </a>
           ))}
         </GridLayout>
       </LightGallery>
     </GalleryContainer>
   );
-}
+};
 
 export default GalleryC;

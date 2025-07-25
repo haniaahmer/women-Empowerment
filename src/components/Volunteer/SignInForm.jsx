@@ -78,7 +78,7 @@ export  function SignInForm() {
         <div className="text-center mb-8">
           
           <h1 className="text-3xl font-bold text-gray-800 mb-2">Welcome Back</h1>
-          <p className="text-gray-600">Sign in to your Growing Women PK account</p>
+          <p className="text-gray-600">  Log in to continue your journey with us — empowering lives and creating real change, together.</p>
         </div>
 
         {/* Login Form */}
@@ -173,7 +173,7 @@ export  function SignInForm() {
               onClick={handleSubmit}
               className="w-full bg-gradient-to-r bg-yellow-600 hover:bg-yellow-800 text-white font-semibold py-3 px-4 rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 group"
             >
-              <span>Sign In</span>
+              <span>Log In</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </button>
 

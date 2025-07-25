@@ -16,35 +16,27 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
 
       {/* Main content area */}
-      <div className="relative z-10 flex-1 flex items-center px-4 sm:px-6 lg:px-30">
+      <div className="relative z-10 flex-1 flex items-center px-10 sm:px-6 lg:px-50">
         <div className="container mx-auto py-10 sm:py-20">
           <div className="max-w-4xl text-center md:text-left">
             {/* Heading */}
             <h1 className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-['Playfair_Display'] leading-tight mb-6 sm:mb-8">
-              Empowering Women to Lead,Create and
+              Empowering Women to Lead, Create and
               <span className="block text-yellow-500">Thrive.</span>
             </h1>
 
-            {/* Description */}
-           <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mb-8 max-w-4xl mx-auto md:mx-0">
-  <p className="text-base sm:text-lg md:text-xl font-light text-gray-200 leading-relaxed">
-    Libero mauris sed sed proin. Blandit aliquet ipsum faucibus dictum natoque arcu. Potenti ante sed in amet massa aliquet. Enim dui urna mauris volutpat
-  </p>
+            {/* Description & Donate Button */}
+            <div className="flex flex-col items-center md:items-start gap-4 mb-8 max-w-4xl mx-auto md:mx-0">
+              <p className="text-base sm:text-lg md:text-xl font-light text-gray-200 leading-relaxed">
+                Libero mauris sed sed proin. Blandit aliquet ipsum faucibus dictum natoque arcu. Potenti ante sed in amet massa aliquet. Enim dui urna mauris volutpat.
+              </p>
 
-  <a
-    href="#donate"
-    className=" bg-yellow-700 text-ehite px-10 py-3 rounded-full font-bold shadow-md hover:bg-yellow-900 hover:scale-105 transition-all duration-300 animate-bounce"
-  >
-    Donate Now
-  </a>
-</div>
-
-            {/* Stats and Donate Button Aligned with Paragraph */}
-            <div className="mt-6 space-y-6 md:space-y-4">
-             
-
-              {/* Donate Button */}
-              
+              <a
+                href="#donate"
+                className="bg-yellow-700 text-white px-10 py-3 rounded-full font-bold shadow-md hover:bg-yellow-900 hover:scale-105 transition-all "
+              >
+                Donate Now
+              </a>
             </div>
           </div>
         </div>

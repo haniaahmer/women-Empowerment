@@ -35,7 +35,12 @@ export  function SignUpForm() {
       <div className="flex items-center space-x-2 mb-6">
         <Heart className="w-6 h-6 text-[#7F264B]" />
         <h2 className="text-2xl font-bold text-gray-800">Sign Up</h2>
+
       </div>
+      <p className=" text-gray-700 max-w-xl mx-auto mb-6 text-base md:text-lg">
+  Sign up  here to be part of a movement that empowers lives and creates real change — together, we can make a difference.
+</p>
+
       <div className="space-y-4">
         <div>
           <label className="block text-gray-700 font-medium mb-1 flex items-center">
@@ -49,7 +54,7 @@ export  function SignUpForm() {
             onChange={handleInputChange}
             placeholder="Your Name"
             required
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all placeholder-gray-400"
+            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-all placeholder-gray-400"
           />
         </div>
         <div>
@@ -64,7 +69,7 @@ export  function SignUpForm() {
             onChange={handleInputChange}
             placeholder="Your Email"
             required
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#7F264B] transition-all placeholder-gray-400"
+            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-all placeholder-gray-400"
           />
         </div>
         <div>
@@ -79,7 +84,7 @@ export  function SignUpForm() {
             onChange={handleInputChange}
             placeholder="Your Phone Number"
             required
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#7F264B] transition-all placeholder-gray-400"
+            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-all placeholder-gray-400"
           />
         </div>
         <div>
@@ -94,7 +99,7 @@ export  function SignUpForm() {
             onChange={handleInputChange}
             placeholder="Your Password"
             required
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#7F264B] transition-all placeholder-gray-400"
+            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-all placeholder-gray-400"
           />
         </div>
         <div>
@@ -104,7 +109,7 @@ export  function SignUpForm() {
             value={formData.signupType}
             onChange={handleInputChange}
             required
-            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#7F264B] transition-all"
+            className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-gray-500  transition-all"
           >
             <option value="">Select an option</option>
             <option value="donor">As a Donor</option>

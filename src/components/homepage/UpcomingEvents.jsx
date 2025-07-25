@@ -8,24 +8,32 @@ const events = [
     date: 'Aug 5, 2025',
     link: '#',
     image: 'https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&w=800&q=80',
-    description: 'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.',
+    description: 'Join us for a dynamic leadership workshop aimed at empowering women with practical tools and strategies for effective leadership across industries. This event includes panel discussions, networking sessions, and hands-on activities.',
     time: '10:00 AM - 2:00 PM',
   },
   {
     title: 'Creative Women Panel',
     date: 'Aug 15, 2025',
     link: '#',
-    image: 'https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&w=800&q=80',
-    description: 'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.',
+    image: 'https://images.unsplash.com/photo-1581090700227-1e8b48b35b65?auto=format&fit=crop&w=800&q=80',
+    description: 'Celebrate innovation with creative women from diverse fields as they share their journeys, challenges, and insights into building successful creative careers.',
     time: '3:00 PM - 5:00 PM',
   },
   {
     title: 'Startup Pitch Day',
     date: 'Sep 2, 2025',
     link: '#',
-    image: 'https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&w=800&q=80',
-    description: 'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.',
+    image: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=800&q=80',
+    description: 'Witness aspiring female entrepreneurs pitch their startup ideas to industry experts and investors. An inspiring opportunity to learn, support, and network.',
     time: '9:00 AM - 6:00 PM',
+  },
+  {
+    title: 'Digital Skills Bootcamp',
+    date: 'Sep 10, 2025',
+    link: '#',
+    image: 'https://images.unsplash.com/photo-1587614382346-4ec70e388fb3?auto=format&fit=crop&w=800&q=80',
+    description: 'A hands-on bootcamp teaching essential digital skills from website development to social media marketing. Great for beginners and intermediate learners alike.',
+    time: '11:00 AM - 4:00 PM',
   },
 ];
 
@@ -68,7 +76,7 @@ const UpcomingEvents = () => {
         {/* View More Button */}
         <div className="text-right mb-8">
           <a
-            href={events[0].link}
+            href="/events"
             className="inline-block bg-yellow-600 text-white text-sm font-semibold px-5 py-2 rounded-lg hover:bg-yellow-700 transition"
           >
             View More
@@ -79,7 +87,7 @@ const UpcomingEvents = () => {
           {/* Left Main Event */}
           <button
             onClick={() => openModal(events[0])}
-            className="text-left col-span-1 md:col-span-3 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition"
+            className="col-span-1 md:col-span-3 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition text-left"
           >
             <div className="w-full aspect-video">
               <img
@@ -102,14 +110,15 @@ const UpcomingEvents = () => {
             </div>
           </button>
 
-          {/* Right Side Events */}
+          {/* Right Side: 3 Events */}
           <div className="col-span-1 md:col-span-2 flex flex-col gap-6">
-            {events.slice(1).map((event, i) => (
+            {events.slice(1, 4).map((event, i) => (
               <button
                 key={i}
                 onClick={() => openModal(event)}
-                className="text-left bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col md:flex-row hover:shadow-xl transition"
+                className="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col md:flex-row hover:shadow-xl transition text-left"
               >
+                {/* Image */}
                 <div className="w-full md:w-40 h-40 flex-shrink-0">
                   <img
                     src={event.image}
@@ -118,6 +127,7 @@ const UpcomingEvents = () => {
                   />
                 </div>
 
+                {/* Content */}
                 <div className="p-4 flex flex-col justify-center flex-grow">
                   <h3 className="text-lg font-semibold text-gray-800 mb-1">
                     {event.title}

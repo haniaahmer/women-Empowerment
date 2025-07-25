@@ -24,7 +24,7 @@ function App() {
             <Route path="/singleProgram" element={<SingleProg />} />
             <Route path="/Contact" element={<ContactUs/>} />
             <Route path="/Join" element={<SignUp/>} />
-            <Route path="/signin" element={<SignIn/>} />
+            <Route path="/login" element={<SignIn/>} />
             <Route path="/gallery" element={<Gallery/>} />
             <Route path="/blog" element={<Blog/>} />
             <Route path="/Podcast" element={<Podcasts/>} />
