@@ -97,7 +97,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="bg-[#7F264B] py-3 px-4 sm:px-6 lg:px-10 shadow-md sticky top-0 z-50">
+    <nav className="bg-[#7F264B] py-3 px-20 sm:px-5 lg:px-10 shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Logo />
         <div className="hidden md:flex space-x-6 items-center">
