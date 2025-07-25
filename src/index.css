@@ -75,4 +75,42 @@
         .animate-float-fast {
           animation: floatFast 4s ease-in-out infinite;
         }
-      
+ 
+/* Gallery Styles */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  grid-auto-rows: 200px;
+  grid-auto-flow: dense;
+}
+
+.gallery-grid a {
+  display: block;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.gallery-grid a:hover {
+  transform: translateY(-5px);
+}
+
+.gallery-grid .tall {
+  grid-row: span 2;
+}
+
+.gallery-grid .wide {
+  grid-column: span 2;
+}
+
+@media (max-width: 640px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-auto-rows: 150px;
+  }
+  
+  .gallery-grid .wide {
+    grid-column: span 1;
+  }
+}

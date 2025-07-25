@@ -11,6 +11,7 @@ const opportunitiesLinks = [
 ];
 
 const mediaLinks = [
+   { label: "Gallery", href: "/gallery" },
   { label: "Podcast", href: "/podcast" },
   { label: "Blog", href: "/blog" },
 ];

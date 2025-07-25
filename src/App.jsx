@@ -9,6 +9,9 @@ import ContactUs from './pages/ContactUs'
 import SingleProg from './pages/SingleProg';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
+import Gallery from './pages/Gallery';
+import Blog from './pages/Blog';
+import Podcasts from './pages/Podcasts';
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
             <Route path="/Contact" element={<ContactUs/>} />
             <Route path="/Join" element={<SignUp/>} />
             <Route path="/signin" element={<SignIn/>} />
+            <Route path="/gallery" element={<Gallery/>} />
+            <Route path="/blog" element={<Blog/>} />
+            <Route path="/Podcast" element={<Podcasts/>} />
       </Routes>
     </Router>
   );
