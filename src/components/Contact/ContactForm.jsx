@@ -1,5 +1,7 @@
+// src/components/Contact/ContactForm.jsx
 import React, { useState } from 'react';
 import { Mail, MapPin, Globe, Facebook, Instagram } from 'lucide-react';
+import { sendContactForm } from '../../services/api'; // 👈 API from centralized service
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -7,6 +9,9 @@ export function ContactForm() {
     email: '',
     message: ''
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -16,14 +21,21 @@ export function ContactForm() {
     }));
   };
 
-  const handleSubmit = () => {
-    console.log('Form submitted:', formData);
-    alert('Message sent successfully!');
-    setFormData({
-      name: '',
-      email: '',
-      message: ''
-    });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+    setSuccess(null);
+
+    try {
+      await sendContactForm(formData);
+      setSuccess('Message sent successfully!');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -31,12 +43,7 @@ export function ContactForm() {
       <div className="flex flex-col md:flex-row">
         {/* Left Side - Contact Info */}
         <div className="md:w-1/2 bg-[#7F264B] p-8 text-white">
-          <h2 className="text-4xl font-bold mb-6">Get in Touch</h2>
-     <div className="text-white max-w-2xl mx-auto mb-6 text-base md:text-lg flex items-center justify-center gap-4 ml-2">
- 
-  <span>Have questions or want to support our mission? We'd love to hear from you — let’s make a difference together.</span>
-</div>
-
+          <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <MapPin className="w-5 h-5" />
@@ -66,49 +73,57 @@ export function ContactForm() {
         {/* Right Side - Contact Form */}
         <div className="md:w-1/2 p-8 bg-gray-50">
           <div className="space-y-5">
-            <div>
-              <label className="block text-gray-700 font-medium mb-1">Name</label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                placeholder="Your Name"
-                required
-                className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all placeholder-gray-400"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 font-medium mb-1">Email</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="Your Email"
-                required
-                className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all placeholder-gray-400"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 font-medium mb-1">Message</label>
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                placeholder="Your Message"
-                rows="4"
-                required
-                className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all placeholder-gray-400 resize-none"
-              ></textarea>
-            </div>
-            <button
-              type="button"
-              onClick={handleSubmit}
-              className="w-full bg-yellow-700 text-white font-medium py-2 rounded-md hover:bg-yellow-800 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-            >
-              Send Message
-            </button>
+            {success && (
+              <div className="text-green-600 bg-green-100 rounded px-3 py-2 mb-2">{success}</div>
+            )}
+            {error && (
+              <div className="text-red-600 bg-red-100 rounded px-3 py-2 mb-2">{error}</div>
+            )}
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label className="block text-gray-700 font-medium mb-1">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder="Your Name"
+                  required
+                  className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all placeholder-gray-400"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 font-medium mb-1">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="Your Email"
+                  required
+                  className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all placeholder-gray-400"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 font-medium mb-1">Message</label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  placeholder="Your Message"
+                  rows="4"
+                  required
+                  className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all placeholder-gray-400 resize-none"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-yellow-700 text-white font-medium py-2 rounded-md hover:bg-yellow-800 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              >
+                {loading ? 'Sending...' : 'Send Message'}
+              </button>
+            </form>
           </div>
         </div>
       </div>
